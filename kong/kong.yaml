@@ -1,0 +1,37 @@
+_format_version: "3.0"
+
+services:
+  - name: auth-api-service
+    url: http://auth-api:3001
+    routes:
+      - name: auth-route
+        paths:
+          - /auth
+        strip_path: false
+    # sem jwt — login/register/refresh são públicos; logout valida via NestJS
+
+  - name: wallet-api-service
+    url: http://wallet-api:3002
+    routes:
+      - name: wallet-route
+        paths:
+          - /wallet
+        strip_path: false
+    plugins:
+      - name: jwt
+        config:
+          claims_to_verify:
+            - exp
+          key_claim_name: iss
+      - name: inject-user-id
+      - name: rate-limiting
+        config:
+          minute: 60
+          policy: local
+
+consumers:
+  - username: app-client
+    jwt_secrets:
+      - algorithm: HS256
+        key: auth-api
+        secret: ${JWT_SECRET}
