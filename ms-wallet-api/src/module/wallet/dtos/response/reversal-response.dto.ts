@@ -1,8 +1,8 @@
-import { TransactionStatus } from "../enums/transaction-status.enum";
+import { TransactionStatus } from "../../enums/transaction-status.enum";
 
 export class ReversalResponseDto {
   reversalId: string;
-  status: TransactionStatus;
+  status!: TransactionStatus;
   amount: number;
   message: string;
 }

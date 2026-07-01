@@ -207,6 +207,35 @@
               "raw": "{\n  \"amount\": 50.00\n}"
             }
           }
+        },
+        {
+          "name": "Get Statement",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/wallet/statement?startDate=2026-06-01&endDate=2026-06-30",
+              "host": ["{{baseUrl}}"],
+              "path": ["wallet", "statement"],
+              "query": [
+                { "key": "startDate", "value": "2026-06-01" },
+                { "key": "endDate", "value": "2026-06-30" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
+          }
         }
       ]
     }

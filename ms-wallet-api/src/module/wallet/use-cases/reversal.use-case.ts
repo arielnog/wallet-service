@@ -9,7 +9,7 @@ import { TransactionStatus } from "../enums/transaction-status.enum";
 import { TransactionType } from "../enums/transaction-type.enum";
 import { ReversalDto } from "../dtos/reversal.dto";
 import { ReversalJobData } from "../types/reversal-job.type";
-import { ReversalResponseDto } from "../dtos/reversal-response.dto";
+import { ReversalResponseDto } from "../dtos/response/reversal-response.dto";
 
 @Injectable()
 export class ReversalUseCase {

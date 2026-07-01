@@ -48,8 +48,11 @@ export class TransferUseCase {
       await manager.increment(Wallet, { id: receiverWallet.id }, 'balance', amount);
 
       return {
+        transactionId: transaction.id,
+        status: transaction.status,
         amount: transaction.amount,
         receiverWalletId: transaction.targetWalletId,
+        createdAt: transaction.createdAt,
       };
     });
   }
